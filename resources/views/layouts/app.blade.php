@@ -35,16 +35,16 @@
             </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 no-bullets">
                     <li class="nav-item dropdown">
-                        <a class="btn navbar-brand event_btn" href="#">Events
+                        <a class="btn navbar-brand" href="#">Events
                             <div class="dropdown-content">
-                                <a href="#">Category 1</a>
-                                <a href="#">Category 2</a>
-                                <a href="#">Category 3</a>
+                                <a href="/categories/1">Category 1</a>
+                                <a href="/categories/2">Category 2</a>
+                                <a href="/categories/3">Category 3</a>
                             </div>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn navbar-brand nav-links" href="#">About Us</a>
+                        <a class="btn navbar-brand nav-links" href="{{ route('aboutus') }}">About Us</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 no-bullets" id="right_navbar">

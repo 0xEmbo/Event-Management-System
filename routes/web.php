@@ -1,6 +1,9 @@
 <?php
 
+use App\Category;
 use Illuminate\Support\Facades\Route;
+
+use App\Event;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,16 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('ems.index');
+});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', function(){
-    return view('/ems/index');
-});
-
 Route::resource('events', 'EventsController');
+Route::resource('categories', 'CategoriesController');
+Route::get('aboutus', 'CategoriesController@aboutus')->name('aboutus');
