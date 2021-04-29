@@ -4,7 +4,16 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100 p-t-90 p-b-30">
-            <form class="login100-form validate-form" method='post' action='{{ route('events.store') }}'>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                           <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form class="login100-form validate-form" method="post" action="{{ route('events.store') }}">
                 @csrf
                 <span class="login100-form-title p-b-40 nav-links">
                     {{ __('Create Event') }}
@@ -41,16 +50,16 @@
                 </div>
                 <div class="wrap-input100 validate-input m-b-16">
                     <label for="starts_at">Start date:</label>
-                    <input class="input100" id="start_date" type="datetime-local" name="start_date" required>
+                    <input class="input100" id="start_date" type="datetime-local" name="starts_at" required>
                 </div>
                 <div class="wrap-input100 validate-input m-b-16">
                     <label for="ends_at">End date:</label>
-                    <input class="input100" id="end_date" type="datetime-local" name="end_date" required>
+                    <input class="input100" id="end_date" type="datetime-local" name="ends_at" required>
                 </div>
                 <div class="container-login100-form-btn">
-                        <button class="login100-form-btn nav-links">
-                            Create
-                        </button>
+                    <button type="submit" class="login100-form-btn nav-links">
+                        Create
+                    </button>
                 </div>
             </form>
         </div>

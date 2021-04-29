@@ -16,7 +16,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        //
+        return view('ems.index');
     }
 
     /**
@@ -26,7 +26,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('ems.create');
+        //
     }
 
     /**
@@ -43,9 +43,10 @@ class EventsController extends Controller
         $event->description = $request->description;
         $event->price = $request->price;
         $event->room_id = $request->room_id;
-        $event->start_at = $request->starts_at;
-        $event->ends_at = $request->ends_att;
+        $event->starts_at = $request->starts_at;
+        $event->ends_at = $request->ends_at;
         $event->save();
+        return redirect(route('home'));
     }
 
     /**

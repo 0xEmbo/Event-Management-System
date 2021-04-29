@@ -18,11 +18,9 @@ use App\Event;
 
 Route::get('/', function () {
     return view('ems.index');
-});
+})->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('events', 'EventsController');
 Route::resource('categories', 'CategoriesController');
