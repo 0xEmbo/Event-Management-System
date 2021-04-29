@@ -83,7 +83,5 @@ class CategoriesController extends Controller
         //
     }
 
-    public function aboutus(){
-        return view('ems.aboutus');
-    }
+
 }

@@ -38,7 +38,7 @@
                     <li class="nav-item dropdown">
                         <a class="btn navbar-brand" href="#">Events
                             <div class="dropdown-content">
-                                <a href="/categories/1">Category 1</a>
+                                <a href="{{ route('categories.show', '1') }}">Category 1</a>
                                 <a href="/categories/2">Category 2</a>
                                 <a href="/categories/3">Category 3</a>
                             </div>
