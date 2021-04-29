@@ -12,22 +12,23 @@
     <title>Chitkara University - Events</title>
 
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-
     <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-
     <link href="{{ asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
-
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
-
-    @yield('css')
-
-
+    <link rel="stylesheet" type="text/css" href="{{asset('css/icon-font.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 </head>
 
 <body id="page-top">
-
+    <div class="parallax"></div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="header-navbar">
@@ -60,7 +61,7 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="btn btn-primary btn-lg navbar-brand" href="#" id="btn-ce">Create Event</a>
+                            <a class="btn btn-primary btn-lg navbar-brand" href="{{ route('events.create') }}" id="btn-ce">Create Event</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="btn navbar-brand nav-links" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -80,23 +81,24 @@
                             </div>
                         </li>
                     @endguest
-
                 </ul>
-
         </div>
     </nav>
 
     @yield('content')
 
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
     <script src="{{ asset('vendor/scrollreveal/scrollreveal.min.js') }}"></script>
     <script src="{{ asset('vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
-
     <script src="{{ asset('js/custom.min.js') }}"></script>
-
+	<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+    <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
+    <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
+    <script src="{{asset('js/main.js')}}"></script>
 </body>
 </html>

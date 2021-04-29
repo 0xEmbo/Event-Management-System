@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
+
+use App\Event;
 
 class EventsController extends Controller
 {
@@ -23,7 +26,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('ems.create');
     }
 
     /**
@@ -32,9 +35,17 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateEventRequest $request)
     {
-        //
+        $event = new Event();
+        $event->category_id = $request->category_id;
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->price = $request->price;
+        $event->room_id = $request->room_id;
+        $event->start_at = $request->starts_at;
+        $event->ends_at = $request->ends_att;
+        $event->save();
     }
 
     /**
