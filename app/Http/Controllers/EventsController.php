@@ -32,6 +32,9 @@ class EventsController extends Controller
      */
     public function create()
     {
+        // $id = auth()->user()->id;
+        // $id = Event::find(1)->user_id;
+        // dd($id);
         return view('ems.create')->with('categories', Category::all());
     }
 
@@ -51,6 +54,7 @@ class EventsController extends Controller
         $event->room_id = $request->room_id;
         $event->starts_at = $request->starts_at;
         $event->ends_at = $request->ends_at;
+        $event->user_id = auth()->user()->id;
         $event->save();
         return redirect(route('home'));
     }

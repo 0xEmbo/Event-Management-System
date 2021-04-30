@@ -22,6 +22,7 @@ class CreateEventsTable extends Migration
             $table->string('room_id');
             $table->dateTime('starts_at');
             $table->dateTime('ends_at');
+            $table->string('user_id');
             $table->timestamps();
         });
     }
