@@ -13,18 +13,26 @@
                     </ul>
                 </div>
             @endif
-            <form class="login100-form validate-form" method="post" action="{{ route('events.store') }}">
+            <form class="login100-form validate-form" method="post" action="{{ isset($event) ? route('events.update') : route('events.store') }}">
                 @csrf
                 <span class="login100-form-title p-b-40 nav-links">
-                    {{ __('Create Event') }}
+                    {{ isset($event) ? _('Edit Event') : __('Create Event') }}
                 </span>
                 <div class="wrap-input100 validate-input m-b-16">
                     <label for="category">Category:</label>
                     <select name="category_id" id="category" class="input100" required>
                         <option value="" disabled selected>Select a category</option>
-                        <option value="1">Category1</option>
-                        <option value="2">Category2</option>
-                        <option value="3">Category3</option>
+                        @foreach ($categories as $category)
+                            <option value='{{ $category->id }}'
+                                @if(isset($event))
+                                    @if ($category->id == $event->category_id)
+                                        selected
+                                    @endif
+                                @endif
+                                >
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="wrap-input100 validate-input m-b-16">
@@ -58,7 +66,7 @@
                 </div>
                 <div class="container-login100-form-btn">
                     <button type="submit" class="login100-form-btn nav-links">
-                        Create
+                        {{ isset($event) ? 'Edit' : 'Create' }}
                     </button>
                 </div>
             </form>

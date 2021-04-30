@@ -19,6 +19,7 @@ use App\Event;
 Route::get('/', function () {
     return view('ems.index');
 })->name('home');
+
 Route::get('aboutus', function (){
     return view('ems.aboutus');
 })->name('aboutus');

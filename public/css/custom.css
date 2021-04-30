@@ -38,20 +38,20 @@ footer {
     padding-top: 170px;
 }
 #forgot_pass {
-    color: rgb(200, 200, 200);
+    color: white;
 }
 #forgot_pass:hover {
-    color: rgb(100, 100, 100);
+    color: rgb(120, 120, 120);
 }
 .nav-links {
     font-weight: 600 !important;
 }
 .nav-links:hover {
-    color: rgb(150, 150, 150) !important;
+    color: rgb(120, 120, 120) !important;
 }
 
 #home:hover {
-    color: rgb(100, 100, 100) !important;
+    color: rgb(120, 120, 120) !important;
 }
 .dropdown {
     position: relative;
@@ -70,7 +70,7 @@ footer {
     font-weight: 400 !important;
     font-size: 20px;
 }
-.dropdown-content a:hover {background-color: rgba(100, 100, 100, 0); color: rgb(150, 150, 150);}
+.dropdown-content a:hover {background-color: rgba(120, 120, 120, 0); color: rgb(200, 200, 200);}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: rgba(0, 0, 0, 0);}
 
@@ -86,7 +86,7 @@ a {
     -webkit-transition: all 0.35s;
     -moz-transition: all 0.35s;
     transition: all 0.35s;
-    color: rgb(200, 200, 200);
+    color: white;
 }
 h1,
 h2,
@@ -125,7 +125,7 @@ ul.no-bullets {
     float: right;
 }
 .navbar-default {
-    background-color: rgba(100, 100, 100, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
     margin: 0px;
     border: 0;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
@@ -134,7 +134,7 @@ ul.no-bullets {
     transition: all 0.35s;
 }
 .navbar-default .header-navbar .navbar-brand {
-    color: rgb(200, 200, 200);
+    color: white;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 700;
     font-size: 30px;
@@ -147,19 +147,19 @@ ul.no-bullets {
     border-color: rgba(255, 255, 255, 0);
   }
   .navbar-default .header-navbar .navbar-brand {
-    color: rgb(200, 200, 200);
+    color: white;
   }
   .navbar-default ul li .navbar-brand {
-    color: rgb(200, 200, 200);
+    color: white;
     margin-right: 40px;
   }
 
   .navbar-default.affix {
-    background-color: rgb(200, 200, 200);
+    background-color: white;
     border-color: rgba(34, 34, 34, 0.05);
   }
   .navbar-default.affix .header-navbar .navbar-brand {
-    color: rgb(200, 200, 200);
+    color: white;
     font-size: 14px;
   }
 
@@ -196,7 +196,7 @@ body .header-content .header-content-inner hr {
 }
 body .header-content .header-content-inner p {
     font-weight: 500;
-    color: rgb(200, 200, 200);
+    color: white;
     font-size: 16px;
     margin-bottom: 50px;
 	background-color: rgba(0,0,0,0.5);
@@ -229,7 +229,7 @@ body .header-content .header-content-inner p {
   }
 }
 nav a {
-    color: rgb(200, 200, 200);
+    color: white;
     background-color: rgba(0, 0, 0, 0);
     font-size: 30px;
     -webkit-transition: all 0.35s;
@@ -238,10 +238,9 @@ nav a {
 
 }
 .btn-primary {
-    color: rgb(200, 200, 200);
+    color: white;
     background-color: rgba(0, 0, 0, 0);
     font-size: 30px;
-    border-color: rgb(200, 200, 200);
     -webkit-transition: all 0.35s;
     -moz-transition: all 0.35s;
     transition: all 0.35s;
@@ -251,7 +250,7 @@ nav a {
     border: none;
 }
 ::selection {
-    background-color:rgb(100, 100, 100);
+    background-color:black;
 }
 select {
     border:1px solid white;
@@ -265,24 +264,45 @@ select {
     border-bottom-right-radius: 31px;
 }
 label {
-    color: rgb(200, 200, 200);
+    color: white;
     float: left;
 }
 * {
     box-sizing: border-box;
   }
-  .column {
+.column {
     float: left;
     width: 33.33%;
-    padding: 20px;
-  }
-  .row::after {
+    padding: 0px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+.row::after {
     content: "";
     clear: both;
     display: table;
-  }
-  @media screen and (max-width: 500px) {
+}
+@media screen and (max-width: 500px) {
     .column {
-      width: 100%;
+        width: 100%;
     }
-  }
+}
+.event-div {
+    height: 5em;
+    background-color: rgb(0, 0, 0, 0.3);
+    position: relative;
+}
+.event-div a {
+    font-size: 25px;
+    font-weight: 800;
+    position: absolute; top: 50%;
+    transform: translate(0, -50%);
+    left: 125px;
+}
+.h1-custom {
+    padding-bottom: 50px;
+    font-weight: 900
+}
+.h1-custom::first-letter {
+    text-transform: uppercase;
+}

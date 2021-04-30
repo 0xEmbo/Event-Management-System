@@ -25,7 +25,7 @@ a {
 	font-family: Oswald-Regular;
 	font-size: 14px;
 	line-height: 1.7;
-	color: #666666;
+	color: white;
 	margin: 0px;
 	transition: all 0.4s;
 	-webkit-transition: all 0.4s;
@@ -39,7 +39,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-  color: #111111;
+    color: rgb(120, 120, 120);
 }
 
 /*---------------------------------------------*/
@@ -172,7 +172,7 @@ iframe {
 }
 
 .wrap-login100 {
-  width: 320px;
+  width: 600px;
   background: transparent;
   border-radius: 0px;
 }

@@ -27,7 +27,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 </head>
 
-<body id="page-top">
+<body>
     <div class="parallax"></div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -39,8 +39,8 @@
                         <a class="btn navbar-brand" href="#">Events
                             <div class="dropdown-content">
                                 <a href="{{ route('categories.show', '1') }}">Category 1</a>
-                                <a href="/categories/2">Category 2</a>
-                                <a href="/categories/3">Category 3</a>
+                                <a href="{{ route('categories.show', '2') }}">Category 2</a>
+                                <a href="{{ route('categories.show', '3') }}">Category 3</a>
                             </div>
                         </a>
                     </li>
@@ -67,19 +67,14 @@
                             <a id="navbarDropdown" class="btn navbar-brand nav-links" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                                 <div class="dropdown-content" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                                 </div>
                             </a>
-
-
                         </li>
                     @endguest
                 </ul>

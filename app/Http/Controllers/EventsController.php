@@ -6,6 +6,7 @@ use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
 
 use App\Event;
+use App\Category;
 
 class EventsController extends Controller
 {
@@ -26,7 +27,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('ems.create');
+        return view('ems.create')->with('categories', Category::all());
     }
 
     /**
@@ -55,9 +56,9 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Event $event)
     {
-        //
+        return view('ems.view')->with('event', $event);
     }
 
     /**
@@ -66,9 +67,9 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Event $event)
     {
-        //
+        return view('ems.create')->with('event', $event)->with('categories', Category::all());
     }
 
     /**

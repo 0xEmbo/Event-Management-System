@@ -2,20 +2,19 @@
 
 @section('content')
     <div class="header-content">
+        <h1 class="h1-custom">{{ $category->name }}</h1>
         <div class="header-content-inner">
             @if(!isset($category))
                 <h1>All education-related events<br>in one single plateform</h1>
             @else
                 <div class="row">
-                    <div class="column">
-                      <img src="{{ url('/images/header.jpg') }}" alt="Snow" style="width:100%">
-                    </div>
-                    <div class="column">
-                      <img src="{{ url('/images/header.jpg') }}" alt="Forest" style="width:100%">
-                    </div>
-                    <div class="column">
-                      <img src="{{ url('/images/header.jpg') }}" alt="Mountains" style="width:100%">
-                    </div>
+                    @foreach ($category->events as $event)
+                        <div class="column">
+                            <div class="event-div">
+                                <a href="{{ route('events.show', $event->id) }}">{{$event->title}}</a>
+                            </div>
+                        </div>
+                    @endforeach
                   </div>
 
             @endif
