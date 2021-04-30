@@ -171,11 +171,15 @@ iframe {
   position: relative;
 }
 
-.wrap-login100 {
+.wrap-login100-create {
   width: 600px;
   background: transparent;
   border-radius: 0px;
 }
+.wrap-login100-sign {
+    background: transparent;
+    border-radius: 0px;
+  }
 
 
 /*==================================================================
@@ -407,7 +411,10 @@ iframe {
 /*//////////////////////////////////////////////////////////////////
 [ Responsive ]*/
 @media (max-width: 576px) {
-  .wrap-login100 {
+  .wrap-login100-create {
+    padding-top: 20px
+  }
+  .wrap-login100-sign {
     padding-top: 20px
   }
 }

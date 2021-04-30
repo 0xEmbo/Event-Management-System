@@ -3,7 +3,7 @@
 @section('content')
 <div class="limiter">
     <div class="container-login100">
-        <div class="wrap-login100 p-t-90 p-b-30">
+        <div class="wrap-login100-create p-t-90 p-b-30">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>

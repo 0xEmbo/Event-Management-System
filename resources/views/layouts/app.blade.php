@@ -36,7 +36,7 @@
             </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 no-bullets">
                     <li class="nav-item dropdown">
-                        <a class="btn navbar-brand" href="#">Events
+                        <a class="btn navbar-brand nav-links" href="#">Events
                             <div class="dropdown-content">
                                 <a href="{{ route('categories.show', '1') }}">Category 1</a>
                                 <a href="{{ route('categories.show', '2') }}">Category 2</a>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="limiter pt170">
     <div class="container-login100">
-        <div class="wrap-login100 p-t-90 p-b-30">
+        <div class="wrap-login100-sign p-t-90 p-b-30">
             <form class="login100-form validate-form" method='post' action='{{ route('register') }}'>
                 @csrf
                 <span class="login100-form-title p-b-40 nav-links">
