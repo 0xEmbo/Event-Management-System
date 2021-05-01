@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Event;
 use App\Category;
+use App\Http\Requests\UpdateEventRequest;
 
 class EventsController extends Controller
 {
@@ -14,6 +15,7 @@ class EventsController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
+        $this->middleware('verifyEditEvent')->only('update');
     }
     /**
      * Display a listing of the resource.
@@ -32,9 +34,6 @@ class EventsController extends Controller
      */
     public function create()
     {
-        // $id = auth()->user()->id;
-        // $id = Event::find(1)->user_id;
-        // dd($id);
         return view('ems.create')->with('categories', Category::all());
     }
 
@@ -56,7 +55,8 @@ class EventsController extends Controller
         $event->ends_at = $request->ends_at;
         $event->user_id = auth()->user()->id;
         $event->save();
-        session()->flash('success', 'Event created successfully!');
+        session()->flash('message', 'Event created successfully!');
+        session()->flash('alert-class', 'alert-success');
         return redirect(route('home'));
     }
 
@@ -89,7 +89,7 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(UpdateEventRequest $request, Event $event)
     {
         $event->category_id = $request->category_id;
         $event->title = $request->title;
@@ -99,7 +99,8 @@ class EventsController extends Controller
         $event->starts_at = $request->starts_at;
         $event->ends_at = $request->ends_at;
         $event->save();
-        session()->flash('success', 'Event updated successfully!');
+        session()->flash('message', 'Event updated successfully!');
+        session()->flash('alert-class', 'alert-success');
         return redirect(route('home'));
     }
 

@@ -80,18 +80,10 @@
                 </ul>
         </div>
     </nav>
-    @if (session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-    @elseif ($errors->any())
-        <div class="alert alert-danger">
-            <ul class="list-group">
-                @foreach ($errors->all() as $error)
-                    <li class="list-group-item">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    @if(session()->has('message'))
+    <div class="container">
+        <br><br><br><h1 class="alert {{ session()->get('alert-class') }}" style="padding: 20px; margin:0px;">{{ session()->get('message') }}</h1>
+    </div>
     @endif
 
     @yield('content')

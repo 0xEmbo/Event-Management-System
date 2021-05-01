@@ -8,6 +8,7 @@
                 @csrf
                 @if (isset($event))
                     @method('put')
+                    <input type='hidden' name='id' value='{{ $event->id }}'>
                 @endif
                 <span class="login100-form-title p-b-40">
                     {{ isset($event) ? _('Edit Event') : __('Create Event') }}
