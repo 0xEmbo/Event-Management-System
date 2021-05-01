@@ -56,6 +56,7 @@ class EventsController extends Controller
         $event->ends_at = $request->ends_at;
         $event->user_id = auth()->user()->id;
         $event->save();
+        session()->flash('success', 'Event created successfully!');
         return redirect(route('home'));
     }
 
@@ -88,9 +89,18 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-        //
+        $event->category_id = $request->category_id;
+        $event->title = $request->title;
+        $event->description = $request->description;
+        $event->price = $request->price;
+        $event->room_id = $request->room_id;
+        $event->starts_at = $request->starts_at;
+        $event->ends_at = $request->ends_at;
+        $event->save();
+        session()->flash('success', 'Event updated successfully!');
+        return redirect(route('home'));
     }
 
     /**

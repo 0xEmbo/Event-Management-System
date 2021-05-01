@@ -193,7 +193,7 @@ iframe {
 .login100-form-title {
   font-family: Oswald-Medium;
   font-size: 30px;
-  color: rgb(200, 200, 200);
+  color: white;
   line-height: 1.2;
   text-align: center;
 
@@ -293,10 +293,9 @@ iframe {
   border-radius: 31px;
 
   font-family: Oswald-Regular;
-  font-size: 16px;
-  color: rgb(200, 200, 200);
+  font-size: 20px;
+  color: white;
   line-height: 1.2;
-  text-transform: uppercase;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -321,7 +320,7 @@ iframe {
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
   border-radius: 31px;
-  background-color: rgb(0, 0, 150);
+  background-color: rgb(85, 15, 177);
   pointer-events: none;
 
   -webkit-transition: all 0.4s;
@@ -331,7 +330,7 @@ iframe {
 }
 
 .login100-form-btn:hover:before {
-  background-color: rgb(14, 14, 88);
+  background-color: rgb(85, 15, 200);
   width: calc(100% + 20px);
 }
 
