@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Event;
 use App\Category;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateEventRequest;
 
 class EventsController extends Controller
@@ -54,6 +55,7 @@ class EventsController extends Controller
         $event->starts_at = $request->starts_at;
         $event->ends_at = $request->ends_at;
         $event->user_id = auth()->user()->id;
+        $event->image_path = '/storage/'.$request->image->store('event_imgs');
         $event->save();
         session()->flash('message', 'Event created successfully!');
         session()->flash('alert-class', 'alert-success');
@@ -98,6 +100,7 @@ class EventsController extends Controller
         $event->room_id = $request->room_id;
         $event->starts_at = $request->starts_at;
         $event->ends_at = $request->ends_at;
+        $event->image_path = '/storage/'.$request->image->hashName();
         $event->save();
         session()->flash('message', 'Event updated successfully!');
         session()->flash('alert-class', 'alert-success');
@@ -110,8 +113,17 @@ class EventsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-        //
+        Storage::delete($event->image_path);
+        $event->delete();
+        session()->flash('message', 'Event deleted successfully!');
+        session()->flash('alert-class', 'alert-success');
+        return redirect(route('home'));
+    }
+
+    public function show_category(Category $category)
+    {
+        return view('ems.index')->with('category', $category);
     }
 }

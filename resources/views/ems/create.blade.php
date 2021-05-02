@@ -4,7 +4,7 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100-create p-t-90 p-b-30">
-            <form class="login100-form validate-form" method="post" action="{{ isset($event) ? route('events.update', $event->id) : route('events.store') }}">
+            <form class="login100-form validate-form" method="post" action="{{ isset($event) ? route('events.update', $event->id) : route('events.store') }}" enctype="multipart/form-data">
                 @csrf
                 @if (isset($event))
                     @method('put')
@@ -58,6 +58,10 @@
                 <div class="wrap-input100 validate-input m-b-16">
                     <label for="ends_at">End date:</label>
                     <input class="input100" id="end_date" type="datetime-local" name="ends_at" required>
+                </div>
+                <div class="wrap-input100 validate-input m-b-16">
+                    <label for="image">Image (optional):</label>
+                    <input class="input100" id="image" type="file" name="image">
                 </div>
                 <div class="container-login100-form-btn">
                     <button type="submit" class="login100-form-btn">

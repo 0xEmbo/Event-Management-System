@@ -4,6 +4,7 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100-create p-t-90 p-b-30">
+                <img src="{{ asset($event->image_path) }}" width="50%" height="50%">
                 <h1>
                     {{ $event->title }}
                 </h1>
@@ -13,9 +14,13 @@
                 {{ $event->ends_at }} <br>
                 {{ $event->price }} <br>
                 {{ $event->room_id }} <br>
-                {{ $event->user->name }}
-                <a href='{{ route('events.edit', $event->id) }}' class="login100-form-btn">Edit</a>
-                <a href='{{ route('events.destroy', $event->id) }}' class="login100-form-btn">Delete</a>
+                {{ $event->user->name }} <br>
+                <a href='{{ route('events.edit', $event->id) }}' class="btn btn-primary edit-del-btn">Edit</a>
+                <form action='{{ route('events.destroy', $event->id) }}' method='post' styl>
+                    @csrf
+                    @method('delete')
+                    <button type='submit' class="btn btn-danger edit-del-btn">Delete</button>
+                </form>
             </div>
         </div>
     </div>

@@ -20,9 +20,10 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->float('price');
             $table->string('room_id');
+            $table->integer('user_id');
+            $table->string('image_path');
             $table->dateTime('starts_at');
             $table->dateTime('ends_at');
-            $table->integer('user_id');
             $table->timestamps();
         });
     }

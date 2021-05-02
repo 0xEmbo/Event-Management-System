@@ -27,4 +27,4 @@ Route::get('aboutus', function (){
 Auth::routes();
 
 Route::resource('events', 'EventsController');
-Route::resource('categories', 'CategoriesController');
+Route::get('categories/{category}', 'EventsController@show_category')->name('category');

@@ -38,9 +38,9 @@
                     <li class="nav-item dropdown">
                         <a class="btn navbar-brand nav-links" href="#">Events
                             <div class="dropdown-content">
-                                <a href="{{ route('categories.show', '1') }}">Category 1</a>
-                                <a href="{{ route('categories.show', '2') }}">Category 2</a>
-                                <a href="{{ route('categories.show', '3') }}">Category 3</a>
+                                <a href="{{ route('category', '1') }}">Category 1</a>
+                                <a href="{{ route('category', '2') }}">Category 2</a>
+                                <a href="{{ route('category', '3') }}">Category 3</a>
                             </div>
                         </a>
                     </li>
@@ -61,7 +61,7 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="btn btn-primary btn-lg navbar-brand" href="{{ route('events.create') }}" id="btn-ce">Create Event</a>
+                            <a class="btn btn-nav btn-lg navbar-brand" href="{{ route('events.create') }}" id="btn-ce">Create Event</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="btn navbar-brand nav-links" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

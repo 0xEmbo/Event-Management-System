@@ -29,7 +29,8 @@ class CreateEventRequest extends FormRequest
             'description' => 'required',
             'room_id' => 'required',
             'starts_at' => 'required',
-            'ends_at' => 'required'
+            'ends_at' => 'required',
+            'image' => 'required|image'
         ];
     }
 }
