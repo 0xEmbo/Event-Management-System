@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Applicant;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
 
 use App\Event;
 use App\Category;
+use App\Http\Requests\EventRegisterationRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateEventRequest;
+
 
 class EventsController extends Controller
 {
@@ -126,5 +129,25 @@ class EventsController extends Controller
     public function show_category(Category $category)
     {
         return view('ems.index')->with('category', $category);
+    }
+
+    public function register(Event $event)
+    {
+        return view('ems.register')->with('event', $event);
+    }
+
+    public function join(EventRegisterationRequest $request, $event_id)
+    {
+        $applicant = new Applicant();
+        $applicant->event_id = $event_id;
+        $applicant->fname = $request->applicant_fname;
+        $applicant->lname = $request->applicant_lname;
+        $applicant->email = $request->applicant_email;
+        $applicant->phone = $request->applicant_phone;
+        $applicant->address = $request->applicant_address;
+        $applicant->save();
+        session()->flash('message', 'You have successfully registered to the event!');
+        session()->flash('alert-class', 'alert-success');
+        return redirect(route('home'));
     }
 }

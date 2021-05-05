@@ -1,9 +1,7 @@
 <?php
 
-use App\Category;
 use Illuminate\Support\Facades\Route;
-
-use App\Event;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +26,5 @@ Auth::routes();
 
 Route::resource('events', 'EventsController');
 Route::get('categories/{category}', 'EventsController@show_category')->name('category');
+Route::get('events/{event}/register', 'EventsController@register')->name('events.register');
+Route::post('events/{event}/join', 'EventsController@join')->name('events.join');

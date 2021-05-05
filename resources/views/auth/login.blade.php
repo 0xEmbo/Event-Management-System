@@ -6,10 +6,10 @@
         <div class="wrap-login100-sign p-t-90 p-b-30">
             <form class="login100-form validate-form" method='post' action='{{ route('login') }}'>
                 @csrf
-                <span class="login100-form-title p-b-40 nav-links">
+                <span class="login100-form-title p-b-40">
                     {{ __('Login') }}
                 </span>
-                <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email: ex@abc.xyz">
+                <div class="wrap-input100 m-b-16" data-validate="Please enter email: ex@abc.xyz">
                     <input class="input100" type="text" name="email" placeholder="{{ __('E-Mail Address') }}" value='{{ old('email') }}' required>
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -18,7 +18,7 @@
                     @enderror
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 validate-input m-b-20" data-validate = "Please enter password">
+                <div class="wrap-input100 m-b-20" data-validate = "Please enter password">
                     <input class="input100" type="password" name="password" placeholder="{{ __('Password') }}" required>
                     @error('password')
                         <span class="invalid-feedback" role="alert">

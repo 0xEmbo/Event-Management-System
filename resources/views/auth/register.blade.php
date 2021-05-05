@@ -6,10 +6,10 @@
         <div class="wrap-login100-sign p-t-90 p-b-30">
             <form class="login100-form validate-form" method='post' action='{{ route('register') }}'>
                 @csrf
-                <span class="login100-form-title p-b-40 nav-links">
+                <span class="login100-form-title p-b-40">
                     {{ __('Register') }}
                 </span>
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="wrap-input100 m-b-16">
                     <input class="input100" type="text" name="name" placeholder="{{ __('Name') }}" required>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -18,7 +18,7 @@
                     @enderror
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 validate-input m-b-16">
+                <div class="wrap-input100 m-b-16">
                     <input class="input100" type="email" name="email" placeholder="{{ __('E-Mail Address') }}" required>
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
                     @enderror
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 validate-input m-b-20">
+                <div class="wrap-input100 m-b-20">
                     <input class="input100" type="password" name="password" placeholder="{{ __('Password') }}" required>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -36,7 +36,7 @@
                     @enderror
                     <span class="focus-input100"></span>
                 </div>
-                <div class="wrap-input100 validate-input m-b-20">
+                <div class="wrap-input100 m-b-20">
                     <input class="input100" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
                     <span class="focus-input100"></span>
                 </div>
