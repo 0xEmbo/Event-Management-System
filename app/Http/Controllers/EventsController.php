@@ -100,7 +100,8 @@ class EventsController extends Controller
         $event->room_id = $request->room_id;
         $event->starts_at = $request->starts_at;
         $event->ends_at = $request->ends_at;
-        $event->image_path = '/storage/'.$request->image->hashName();
+        Storage::delete($event->image_path);
+        $event->image_path = '/storage/'.$request->image->store('event_imgs');
         $event->save();
         session()->flash('message', 'Event updated successfully!');
         session()->flash('alert-class', 'alert-success');

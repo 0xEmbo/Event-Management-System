@@ -60,7 +60,7 @@
                     <input class="input100" id="end_date" type="datetime-local" name="ends_at" required>
                 </div>
                 <div class="wrap-input100 validate-input m-b-16">
-                    <label for="image">Image (optional):</label>
+                    <label for="image">Image:</label>
                     <input class="input100" id="image" type="file" name="image">
                 </div>
                 <div class="container-login100-form-btn">
