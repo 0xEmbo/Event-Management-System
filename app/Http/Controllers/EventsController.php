@@ -15,8 +15,8 @@ class EventsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create', 'store', 'edit', 'update']);
-        $this->middleware('verifyEditEvent')->only('update');
+        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
+        $this->middleware('verifyEditEvent')->only(['update', 'destroy']);
     }
     /**
      * Display a listing of the resource.

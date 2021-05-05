@@ -15,12 +15,15 @@
                 {{ $event->price }} <br>
                 {{ $event->room_id }} <br>
                 {{ $event->user->name }} <br>
-                <a href='{{ route('events.edit', $event->id) }}' class="btn btn-primary edit-del-btn">Edit</a>
-                <form action='{{ route('events.destroy', $event->id) }}' method='post' styl>
-                    @csrf
-                    @method('delete')
-                    <button type='submit' class="btn btn-danger edit-del-btn">Delete</button>
-                </form>
+                @if ($event->user_id == auth()->user()->id)
+                    <a href='{{ route('events.edit', $event->id) }}' class="btn btn-primary edit-del-btn">Edit</a>
+                    <form action='{{ route('events.destroy', $event->id) }}' method='post' styl>
+                        @csrf
+                        @method('delete')
+                        <button type='submit' class="btn btn-danger edit-del-btn">Delete</button>
+                    </form>
+                @endif
+
             </div>
         </div>
     </div>

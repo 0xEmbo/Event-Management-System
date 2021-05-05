@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Chitkara University - Events</title>
+    <title>Eventopedia</title>
 
     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="header-navbar">
-                <a class="navbar-brand" href="/" id="home">Home</a>
+                <a class="navbar-brand" href="/" id="home">Eventopedia</a>
             </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 no-bullets">
                     <li class="nav-item dropdown">
