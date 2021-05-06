@@ -38,9 +38,11 @@
                     <li class="nav-item dropdown">
                         <a class="btn navbar-brand nav-links" href="#">Events
                             <div class="dropdown-content">
-                                <a href="{{ route('category', '1') }}">Category 1</a>
-                                <a href="{{ route('category', '2') }}">Category 2</a>
-                                <a href="{{ route('category', '3') }}">Category 3</a>
+                                <a href="{{ route('category', '1') }}">Conferences</a>
+                                <a href="{{ route('category', '2') }}">Workshops</a>
+                                <a href="{{ route('category', '3') }}">Seminars</a>
+                                <a href="{{ route('category', '4') }}">Meetings</a>
+                                <a href="{{ route('category', '5') }}">Other Events</a>
                             </div>
                         </a>
                     </li>
@@ -67,6 +69,8 @@
                             <a id="navbarDropdown" class="btn navbar-brand nav-links" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                                 <div class="dropdown-content" aria-labelledby="navbarDropdown">
+                                    <a href="#" class="dropdown-item">Profile</a>
+                                    <a href="#" class="dropdown-item">MyEvents</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>

@@ -17,4 +17,8 @@ class Event extends Model
     public function applicants() {
         return $this->hasMany(Applicant::class);
     }
+
+    public function room() {
+        return $this->belongsTo(Room::class);
+    }
 }

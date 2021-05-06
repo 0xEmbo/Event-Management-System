@@ -8,9 +8,6 @@
      height: 100%;
      width: 100%;
  }
-body {
-    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-}
 footer {
     margin: 50px 0;
 }
@@ -178,6 +175,8 @@ body {
     min-height: auto;
     text-align: center;
     color: rgba(255,255,255,0.9);
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+
 }
 body .header-content {
     position: relative;
@@ -287,7 +286,56 @@ label {
     font-weight: 700;
 }
 .edit-del-btn {
-    height: 20%;
-    width: 20%;
+    width: 15%;
     margin-top: 15px;
+    display:inline-block;
+}
+/* Split the screen in half */
+.split {
+    position: fixed;
+    z-index: 1;
+    background: transparent;
+}
+
+  /* Control the left side */
+.left {
+    top: 10%;
+    height: 85%;
+    left: 1%;
+    width: 40%;
+}
+.left img {
+    border-radius: 20px;
+}
+
+  /* Control the right side */
+.right {
+    top: 400px;
+    height: 100%;
+    right: 5%;
+    width: 50%;
+}
+
+  /* If you want the content centered horizontally and vertically */
+.centered {
+    position: relative;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+}
+
+.centered h1 {
+    font-size: 80px;
+    font-weight: 600;
+    text-align: center;
+}
+.centered h2 {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.centered p {
+    font-size: 20px;
+    margin-left: 30px;
 }

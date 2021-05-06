@@ -8,10 +8,12 @@ use Illuminate\Http\Request;
 
 use App\Event;
 use App\Category;
+use App\Room;
+
 use App\Http\Requests\EventRegisterationRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateEventRequest;
-
+use Illuminate\Support\Facades\Gate;
 
 class EventsController extends Controller
 {
@@ -19,7 +21,6 @@ class EventsController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
-        $this->middleware('verifyEditEvent')->only(['update', 'destroy']);
     }
     /**
      * Display a listing of the resource.
@@ -38,7 +39,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        return view('ems.create')->with('categories', Category::all());
+        return view('ems.create')->with('categories', Category::all())->with('rooms', Room::all());
     }
 
     /**
@@ -84,7 +85,13 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('ems.create')->with('event', $event)->with('categories', Category::all());
+        $response = Gate::inspect('del-edit-event', $event);
+        if($response->allowed()) {
+            return view('ems.create')->with('event', $event)->with('categories', Category::all())->with('rooms', Room::all());
+        }
+        else {
+            echo $response->message();
+        }
     }
 
     /**
@@ -96,19 +103,25 @@ class EventsController extends Controller
      */
     public function update(UpdateEventRequest $request, Event $event)
     {
-        $event->category_id = $request->category_id;
-        $event->title = $request->title;
-        $event->description = $request->description;
-        $event->price = $request->price;
-        $event->room_id = $request->room_id;
-        $event->starts_at = $request->starts_at;
-        $event->ends_at = $request->ends_at;
-        Storage::delete($event->image_path);
-        $event->image_path = '/storage/'.$request->image->store('event_imgs');
-        $event->save();
-        session()->flash('message', 'Event updated successfully!');
-        session()->flash('alert-class', 'alert-success');
-        return redirect(route('home'));
+        $response = Gate::inspect('del-edit-event', $event);
+        if($response->allowed()) {
+            $event->category_id = $request->category_id;
+            $event->title = $request->title;
+            $event->description = $request->description;
+            $event->price = $request->price;
+            $event->room_id = $request->room_id;
+            $event->starts_at = $request->starts_at;
+            $event->ends_at = $request->ends_at;
+            Storage::delete($event->image_path);
+            $event->image_path = '/storage/'.$request->image->store('event_imgs');
+            $event->save();
+            session()->flash('message', 'Event updated successfully!');
+            session()->flash('alert-class', 'alert-success');
+            return redirect(route('home'));
+        }
+        else {
+            echo $response->message();
+        }
     }
 
     /**
@@ -119,11 +132,17 @@ class EventsController extends Controller
      */
     public function destroy(Event $event)
     {
-        Storage::delete($event->image_path);
-        $event->delete();
-        session()->flash('message', 'Event deleted successfully!');
-        session()->flash('alert-class', 'alert-success');
-        return redirect(route('home'));
+        $response = Gate::inspect('del-edit-event', $event);
+        if($response->allowed()) {
+            Storage::delete($event->image_path);
+            $event->delete();
+            session()->flash('message', 'Event deleted successfully!');
+            session()->flash('alert-class', 'alert-success');
+            return redirect(route('home'));
+        }
+        else {
+            echo $response->message();
+        }
     }
 
     public function show_category(Category $category)

@@ -12,16 +12,22 @@ class CategoryTableSeeder extends Seeder
      */
     public function run()
     {
-        $category1 = new Category();
-        $category2 = new Category();
-        $category3 = new Category();
+        $conference = new Category();
+        $workshop = new Category();
+        $seminar = new Category();
+        $meeting = new Category();
+        $other = new Category();
 
-        $category1->name = 'category1';
-        $category2->name = 'category2';
-        $category3->name = 'category3';
+        $conference->name = 'Conference';
+        $workshop->name = 'Workshop';
+        $seminar->name = 'Seminar';
+        $meeting->name = 'Meeting';
+        $other->name = 'other';
 
-        $category1->save();
-        $category2->save();
-        $category3->save();
+        $conference->save();
+        $workshop->save();
+        $seminar->save();
+        $meeting->save();
+        $other->save();
     }
 }
