@@ -30,7 +30,7 @@ class CreateEventRequest extends FormRequest
             'room_id' => 'required',
             'starts_at' => 'required',
             'ends_at' => 'required',
-            'image' => 'required|image'
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'
         ];
     }
 }

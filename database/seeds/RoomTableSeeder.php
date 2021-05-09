@@ -24,25 +24,16 @@ class RoomTableSeeder extends Seeder
         $room9 = new Room();
         $room10 = new Room();
 
-        $room1->capacity = 20;
+
         $room1->rate = 0;
-        $room2->capacity = 20;
         $room2->rate = 0;
-        $room3->capacity = 20;
         $room3->rate = 0;
-        $room4->capacity = 20;
         $room4->rate = 0;
-        $room5->capacity = 20;
         $room5->rate = 0;
-        $room6->capacity = 20;
         $room6->rate = 0;
-        $room7->capacity = 20;
         $room7->rate = 0;
-        $room8->capacity = 20;
         $room8->rate = 0;
-        $room9->capacity = 20;
         $room9->rate = 0;
-        $room10->capacity = 20;
         $room10->rate = 0;
 
         $room1->save();

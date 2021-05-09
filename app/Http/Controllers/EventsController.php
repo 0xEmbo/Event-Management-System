@@ -10,6 +10,8 @@ use App\Event;
 use App\Category;
 use App\Room;
 
+use Carbon\Carbon;
+
 use App\Http\Requests\EventRegisterationRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateEventRequest;
@@ -113,7 +115,8 @@ class EventsController extends Controller
             $event->starts_at = $request->starts_at;
             $event->ends_at = $request->ends_at;
             Storage::delete($event->image_path);
-            $event->image_path = '/storage/'.$request->image->store('event_imgs');
+            if($request->image)
+                $event->image_path = '/storage/'.$request->image->store('event_imgs');
             $event->save();
             session()->flash('message', 'Event updated successfully!');
             session()->flash('alert-class', 'alert-success');

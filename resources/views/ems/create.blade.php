@@ -60,11 +60,11 @@
             </div>
             <div class="wrap-input100 m-b-16">
                 <label for="starts_at">Start date:</label>
-                <input class="input100" id="start_date" type="datetime-local" name="starts_at" required>
+                <input class="input100" id="starts_at" type="datetime-local" name="starts_at" value="{{ isset($event) ? date('Y-m-d\TH:i', strtotime($event->starts_at)) : '' }}" required>
             </div>
             <div class="wrap-input100 m-b-16">
                 <label for="ends_at">End date:</label>
-                <input class="input100" id="end_date" type="datetime-local" name="ends_at" required>
+                <input class="input100" id="ends_at" type="datetime-local" name="ends_at" value="{{ isset($event) ? date('Y-m-d\TH:i', strtotime($event->ends_at)) : '' }}" required>
             </div>
             <div class="wrap-input100 m-b-16">
                 <label for="image">Image:</label>
@@ -78,4 +78,5 @@
         </form>
     </div>
 </div>
+
 @endsection

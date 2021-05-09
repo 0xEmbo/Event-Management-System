@@ -42,7 +42,7 @@
                                 <a href="{{ route('category', '2') }}">Workshops</a>
                                 <a href="{{ route('category', '3') }}">Seminars</a>
                                 <a href="{{ route('category', '4') }}">Meetings</a>
-                                <a href="{{ route('category', '5') }}">Other Events</a>
+                                <a href="{{ route('category', '5') }}">Other</a>
                             </div>
                         </a>
                     </li>
@@ -91,7 +91,7 @@
     @endif
 
     @yield('content')
-
+    
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

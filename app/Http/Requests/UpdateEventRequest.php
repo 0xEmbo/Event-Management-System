@@ -30,7 +30,7 @@ class UpdateEventRequest extends FormRequest
             'room_id' => 'required',
             'starts_at' => 'required',
             'ends_at' => 'required',
-            'image' => 'image'
+            'image' => 'image|mimes:jpeg,png,jpg|max:2048'
         ];
     }
 }
