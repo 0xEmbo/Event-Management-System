@@ -153,10 +153,10 @@ class EventsController extends Controller
     {
         $search = request()->query('search');
         if($search){
-            $events = $category->events()->where('title', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->simplePaginate(1);
+            $events = $category->events()->where('title', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->simplePaginate(3);
         }
         else{
-            $events = $category->events()->simplePaginate(1);
+            $events = $category->events()->simplePaginate(3);
         }
         return view('ems.index')->with('category', $category)->with('events', $events);
 
