@@ -12,16 +12,15 @@ footer {
     margin: 50px 0;
 }
 #btn-ce {
-    float: right;
     background-color: rgb(85, 15, 177);
     text-align: center;
     font-size: 20px;
     font-weight: 600;
     margin-right: 40px;
-    border-radius: 30px;
+    border-radius: 15px;
 }
 #btn-ce:hover {
-    color: white;
+    color: white !important;
     background-color: rgb(85, 15, 200);
 }
 #btn-ce:active {
@@ -38,18 +37,40 @@ footer {
     color: white;
 }
 #forgot_pass:hover {
-    color: rgb(120, 120, 120);
+    color: rgb(180, 180, 180);
 }
-.nav-links {
-    font-weight: 600 !important;
-}
-.nav-links:hover {
-    color: rgb(120, 120, 120) !important;
-}
-
 #home:hover {
     color: rgb(120, 120, 120) !important;
 }
+#search-form {
+    padding-top: 10px;
+    color: white;
+    font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 17px;
+    margin-left: 20px;
+    margin-right: 40px;
+
+}
+.search-btn {
+    background-color: rgb(85, 15, 177);
+    text-align: center;
+    border-radius: 15px;
+    margin-right: 30px;
+}
+#search-input {
+    text-align: center;
+    border-radius: 31px;
+    color: black;
+}
+.search-btn:hover {
+    color: white !important;
+    background-color: rgb(85, 15, 200);
+}
+.search-btn:active {
+    transform: scale(0.98);
+    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+ }
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -67,7 +88,7 @@ footer {
     font-weight: 400 !important;
     font-size: 20px;
 }
-.dropdown-content a:hover {background-color: rgba(120, 120, 120, 0); color: rgb(200, 200, 200);}
+.dropdown-content a:hover {background-color: rgba(180, 180, 180, 0); color: rgb(200, 200, 200);}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn {background-color: rgba(0, 0, 0, 0);}
 
@@ -133,11 +154,14 @@ ul.no-bullets {
 .navbar-default .header-navbar .navbar-brand {
     color: white;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 700;
+    font-weight: 700 !important;
     font-size: 30px;
     margin-left: 20px;
     margin-right: 40px;
 
+}
+.navbar-brand:hover {
+    color: rgb(180, 180, 180) !important;
 }
 @media (min-width: 768px) {
   .navbar-default {
@@ -224,14 +248,14 @@ nav a {
 }
 select {
     border:1px solid white;
-    border-radius: 31px;
+    border-radius: 15px;
     -webkit-appearance: none;
-    -webkit-border-top-right-radius: 31px;
-    -webkit-border-bottom-right-radius: 31px;
-    -moz-border-radius-topright: 31px;
-    -moz-border-radius-bottomright: 31px;
-    border-top-right-radius: 31px;
-    border-bottom-right-radius: 31px;
+    -webkit-border-top-right-radius: 15px;
+    -webkit-border-bottom-right-radius: 15px;
+    -moz-border-radius-topright: 15px;
+    -moz-border-radius-bottomright: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 label {
     color: white;

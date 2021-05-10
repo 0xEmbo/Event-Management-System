@@ -37,11 +37,6 @@ a:focus {
 	outline: none !important;
 }
 
-a:hover {
-	text-decoration: none;
-    color: rgb(120, 120, 120);
-}
-
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
 	margin: 0px;
@@ -269,7 +264,7 @@ iframe {
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
   transform: translateX(-50%);
-  border-radius: 31px;
+  border-radius: 15px;
   background-color: rgb(85, 15, 177);
   pointer-events: none;
 
@@ -280,10 +275,10 @@ iframe {
 }
 
 .login100-form-btn:hover:before {
-  background-color: rgb(85, 15, 200);
-  width: calc(100% + 20px);
+    color: white !important;
+    background-color: rgb(85, 15, 200);
 }
-
+}
 
 /*------------------------------------------------------------------
 [ Alert validate ]*/

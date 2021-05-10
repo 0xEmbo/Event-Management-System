@@ -36,7 +36,7 @@
             </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 no-bullets">
                     <li class="nav-item dropdown">
-                        <a class="btn navbar-brand nav-links" href="#">Events
+                        <a class="btn navbar-brand" href="#">Events
                             <div class="dropdown-content">
                                 <a href="{{ route('category', '1') }}">Conferences</a>
                                 <a href="{{ route('category', '2') }}">Workshops</a>
@@ -47,18 +47,21 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn navbar-brand nav-links" href="{{ route('aboutus') }}">About Us</a>
+                        <a class="btn navbar-brand" href="{{ route('aboutus') }}">About Us</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 no-bullets" id="right_navbar">
+                    <li class="nav-item" id="search-form">
+                        @yield('search')
+                    </li>
                     <!-- Authentication Links -->
                     @guest
                         <li class="nav-item">
-                            <a class="btn navbar-brand nav-links" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="btn navbar-brand" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="btn navbar-brand nav-links" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="btn navbar-brand" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @endif
                     @else
@@ -66,7 +69,7 @@
                             <a class="btn btn-nav btn-lg navbar-brand" href="{{ route('events.create') }}" id="btn-ce">Create Event</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="btn navbar-brand nav-links" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="btn navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                                 <div class="dropdown-content" aria-labelledby="navbarDropdown">
                                     <a href="#" class="dropdown-item">Profile</a>
@@ -91,7 +94,7 @@
     @endif
 
     @yield('content')
-    
+
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

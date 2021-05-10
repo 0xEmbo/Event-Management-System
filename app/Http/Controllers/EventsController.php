@@ -151,7 +151,15 @@ class EventsController extends Controller
 
     public function show_category(Category $category)
     {
-        return view('ems.index')->with('category', $category);
+        $search = request()->query('search');
+        if($search){
+            $events = $category->events()->where('title', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->simplePaginate(1);
+        }
+        else{
+            $events = $category->events()->simplePaginate(1);
+        }
+        return view('ems.index')->with('category', $category)->with('events', $events);
+
     }
 
     public function register(Event $event)
