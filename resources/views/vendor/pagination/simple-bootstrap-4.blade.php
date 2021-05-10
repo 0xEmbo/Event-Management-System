@@ -1,5 +1,6 @@
+
 @if ($paginator->hasPages())
-    <nav class="">
+    <nav>
         @if ($paginator->onFirstPage())
             <a class="btn btn-lg search-btn disabled">Previous</a>
         @else
