@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Applicant;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
 
 use App\Event;
 use App\Category;
 use App\Room;
-
-use Carbon\Carbon;
+use App\Applicant;
 
 use App\Http\Requests\EventRegisterationRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateEventRequest;
+use App\Notifications\VerifyEventRegisteration;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Gate;
 
 class EventsController extends Controller
@@ -167,17 +167,23 @@ class EventsController extends Controller
         return view('ems.register')->with('event', $event);
     }
 
-    public function join(EventRegisterationRequest $request, $event_id)
+    public function join(EventRegisterationRequest $request, Event $event)
     {
+
         $applicant = new Applicant();
-        $applicant->event_id = $event_id;
+        $applicant->event_id = $event->id;
         $applicant->fname = $request->applicant_fname;
         $applicant->lname = $request->applicant_lname;
         $applicant->email = $request->applicant_email;
         $applicant->phone = $request->applicant_phone;
         $applicant->address = $request->applicant_address;
         $applicant->save();
-        session()->flash('message', 'You have successfully registered to the event!');
+
+        // Applicant::where('email', '=', $request->applicant_email)->first()
+        // ->notify(new VerifyEventRegisteration($event));
+        Notification::route('mail', $request->applicant_email)->notify(new VerifyEventRegisteration($event));
+
+        session()->flash('message', 'You have successfully registered to the event, Check your mail!');
         session()->flash('alert-class', 'alert-success');
         return redirect(route('home'));
     }

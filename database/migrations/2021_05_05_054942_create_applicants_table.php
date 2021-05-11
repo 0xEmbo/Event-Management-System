@@ -17,7 +17,7 @@ class CreateApplicantsTable extends Migration
             $table->id();
             $table->string('fname');
             $table->string('lname');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone');
             $table->string('address');
             $table->integer('event_id');
