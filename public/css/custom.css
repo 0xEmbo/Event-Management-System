@@ -8,6 +8,8 @@
      height: 100%;
      width: 100%;
  }
+
+
 footer {
     margin: 50px 0;
 }
@@ -25,7 +27,6 @@ footer {
 }
 #btn-ce:active {
     transform: scale(0.98);
-    box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
  }
 .mt {
     padding-top: 5%;
@@ -70,7 +71,18 @@ footer {
     transform: scale(0.98);
     box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
  }
-
+#rate-input {
+    font-family: Oswald-Medium;
+    color: #43383e;
+    background: #fff;
+    border:1px solid white;
+    border-radius: 20px;
+    font-size: 16px;
+    margin: 29px 10px 20px 0px;
+    height: 40px;
+    width: 10%;
+    text-align: center;
+}
 .dropdown {
     position: relative;
     display: inline-block;
@@ -198,7 +210,7 @@ body {
     width: 100%;
     min-height: auto;
     text-align: center;
-    color: rgba(255,255,255,0.9);
+    color: white;
     font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
 
 }
@@ -309,10 +321,21 @@ label {
     padding-bottom: 50px;
     font-weight: 700;
 }
-.edit-del-btn {
-    width: 15%;
+.view-page-btn, .delete-btn {
+    width: 20%;
     margin-top: 15px;
-    display:inline-block;
+    text-align: center;
+}
+.view-page-btn {
+    background-color: rgb(85, 15, 177);
+
+}
+.view-page-btn:hover, .view-page-btn:active {
+    background-color: rgb(85, 15, 200) !important;
+    transform: scale(0.98) !important;
+}
+.delete-btn:hover, .delete-btn:active {
+    transform: scale(0.98) !important;
 }
 /* Split the screen in half */
 .split {
@@ -362,4 +385,81 @@ label {
 .centered p {
     font-size: 20px;
     margin-left: 30px;
+}
+
+/* CSS for ems.view page */
+section, .container, .container-fluid {
+    position: relative;
+}
+@media (min-width: 1200px)
+.container {
+    max-width: 1140px;
+}
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    max-width: 1140px;
+    position: relative;
+}
+.col-md-12 {
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.media-container-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: start;
+    flex-wrap: nowrap;
+}
+.mbr-figure {
+    flex-shrink: 0;
+    padding-right: 4rem;
+    width: 50%;
+}
+
+#img-view {
+    width: 100%;
+}
+.align-left {
+    text-align: left;
+}
+h2 {
+    margin-top: 0;
+    margin-bottom: .5rem;
+    font-weight: 300;
+    line-height: 1;
+    font-family: 'Exo', sans-serif;
+    font-size: 4.25rem;
+    text-align: left;
+}
+.mbr-section-text {
+    text-align: left;
+}
+.block-content {
+    text-align: left;
+    display: -webkit-flex;
+    -webkit-flex-direction: column;
+}
+section {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    position: relative;
+    word-wrap: break-word;
+    padding-top: 200px;
+    padding-bottom: 90px;
+    background-color: transparent;
+}
+#rgst-btn-div {
+    margin-top: 20px;
+    justify-content: left;
 }

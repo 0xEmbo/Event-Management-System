@@ -274,10 +274,13 @@ iframe {
   transition: all 0.4s;
 }
 
-.login100-form-btn:hover:before {
+.login100-form-btn:hover, .login100-form-btn:hover::before {
     color: white !important;
     background-color: rgb(85, 15, 200);
 }
+
+.login100-form-btn:active {
+    transform: scale(0.98);
 }
 
 /*------------------------------------------------------------------

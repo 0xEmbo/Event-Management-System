@@ -53,7 +53,7 @@
                         Don’t have an account?
                     </span>
 
-                    <a href="#" class="txt3 bo1 hov1">
+                    <a href="{{ route('register') }}" class="txt3 bo1 hov1">
                         Sign up now
                     </a>
                 </div>

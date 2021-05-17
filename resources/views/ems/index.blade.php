@@ -13,14 +13,14 @@
             @endsection
             <h1 class="h1-custom">{{ $category->name }}</h1>
             <div class="row">
-                @foreach ($events as $event)
+                @foreach ($category->events as $event)
                     <div class="column">
                         <div class="event-div">
                             <table class="table">
                                 <thead>
                                     <th>Image</th>
                                     <th class="table-border">Title</th>
-                                    <th class="table-border">Created By</th>
+                                    <th class="table-border">Organizer</th>
                                 </thead>
                                 <tbody>
                                     <tr>

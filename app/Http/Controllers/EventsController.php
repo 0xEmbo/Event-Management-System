@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
 
+use App\User;
 use App\Event;
 use App\Category;
 use App\Room;
@@ -186,5 +187,10 @@ class EventsController extends Controller
         session()->flash('message', 'You have successfully registered to the event, Check your mail!');
         session()->flash('alert-class', 'alert-success');
         return redirect(route('home'));
+    }
+
+    public function myevents(User $user)
+    {
+        return view('ems.myevents')->with('user', $user);
     }
 }

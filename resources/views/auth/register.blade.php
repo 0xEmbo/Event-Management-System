@@ -51,7 +51,7 @@
                         Already have an account?
                     </span>
 
-                    <a href="#" class="txt3 bo1 hov1">
+                    <a href="{{ route('login') }}" class="txt3 bo1 hov1">
                         Sign in now
                     </a>
                 </div>
