@@ -98,12 +98,12 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
 
 
 <body>
+<form method="post" action="{{ route('profile.update', $user->id) }}">
 <div class="container light-style flex-grow-1 container-p-y">
     <h4 class="font-weight-bold py-3 mb-4">
       Account settings
     </h4>
     <div class="card overflow-hidden">
-        <form method="post" action="{{ route('profile.update', $user->id) }}">
             @csrf
       <div class="row no-gutters row-bordered row-border-light">
         <div class="col-md-3 pt-0">
@@ -123,7 +123,7 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
                 </div>
                 <div class="form-group">
                   <label class="form-label">E-mail</label>
-                  <input type="text" class="form-control mb-1" name="email">
+                  <input type="text" class="form-control mb-1" name="email" value="{{ $user->email }}">
                 </div>
                 <div class="form-group">
                   <label class="form-label">Company</label>
@@ -170,13 +170,12 @@ html:not(.dark-style) .account-settings-links .list-group-item.active {
           </div>
         </div>
       </div>
-    </form>
     </div>
     <div class="text-right mt-3">
         <button type="submit" class="btn btn-primary">Save changes</button>&nbsp;
-        <button type="button" class="btn btn-default">Cancel</button>
     </div>
   </div>
+</form>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script type="text/javascript">

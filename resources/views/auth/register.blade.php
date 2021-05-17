@@ -3,7 +3,7 @@
 @section('content')
 <div class="pt170">
     <div class="container-login100">
-        <div class="wrap-login100-sign p-t-90 p-b-30">
+        <div class="wrap-login100-sign p-t-10 p-b-30">
             <form class="login100-form validate-form" method='post' action='{{ route('register') }}'>
                 @csrf
                 <span class="login100-form-title p-b-40">
@@ -39,6 +39,18 @@
                 <div class="wrap-input100 m-b-20">
                     <input class="input100" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
                     <span class="focus-input100"></span>
+                </div>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="company" placeholder="Company" required>
+                </div>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="date" name="birthday" placeholder="Birthday" required>
+                </div>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="address" placeholder="Address" required>
+                </div>
+                <div class="wrap-input100 m-b-16">
+                    <input class="input100" type="text" name="phone" placeholder="Phone number" required>
                 </div>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn nav-links">

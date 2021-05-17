@@ -17,6 +17,8 @@ use App\Http\Requests\UpdateEventRequest;
 use App\Notifications\VerifyEventRegisteration;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+
 
 class EventsController extends Controller
 {
@@ -179,9 +181,6 @@ class EventsController extends Controller
         $applicant->phone = $request->applicant_phone;
         $applicant->address = $request->applicant_address;
         $applicant->save();
-
-        // Applicant::where('email', '=', $request->applicant_email)->first()
-        // ->notify(new VerifyEventRegisteration($event));
         Notification::route('mail', $request->applicant_email)->notify(new VerifyEventRegisteration($event));
 
         session()->flash('message', 'You have successfully registered to the event, Check your mail!');
@@ -206,11 +205,26 @@ class EventsController extends Controller
         }
     }
 
-    public function profile_update(User $user)
+    public function profile_update(Request $request, User $user)
     {
         $response = Gate::inspect('visit-profile', $user);
         if($response->allowed()) {
-
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->company = $request->company;
+            $user->bio = $request->bio;
+            $user->birthday = $request->birthday;
+            $user->address = $request->address;
+            $user->phone = $request->phone;
+            if($request->old_password && $request->password && $request->password_confirmation){
+                if(Hash::check($request->old_password, $user->password) && $request->password == $request->password_confirmation){
+                    $user->password = Hash::make($request->password);
+                }
+            }
+            $user->save();
+            session()->flash('message', 'You have successfully updated your profile!');
+            session()->flash('alert-class', 'alert-success');
+            return redirect(route('profile', $user->id));
         }
         else {
             echo $response->message();
