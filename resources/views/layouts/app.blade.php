@@ -72,7 +72,7 @@
                             <a id="navbarDropdown" class="btn navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                                 <div class="dropdown-content" aria-labelledby="navbarDropdown">
-                                    <a href="#" class="dropdown-item">Profile</a>
+                                    <a href="{{ route('profile', auth()->user()->id) }}" class="dropdown-item">Profile</a>
                                     <a href="{{ route('myevents', auth()->user()->id) }}" class="dropdown-item">MyEvents</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}

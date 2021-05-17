@@ -191,6 +191,29 @@ class EventsController extends Controller
 
     public function myevents(User $user)
     {
+        $events = $user->events()->simplePaginate(3);
         return view('ems.myevents')->with('user', $user);
+    }
+
+    public function profile(User $user)
+    {
+        $response = Gate::inspect('visit-profile', $user);
+        if($response->allowed()) {
+            return view('ems.profile')->with('user', $user);
+        }
+        else {
+            echo $response->message();
+        }
+    }
+
+    public function profile_update(User $user)
+    {
+        $response = Gate::inspect('visit-profile', $user);
+        if($response->allowed()) {
+
+        }
+        else {
+            echo $response->message();
+        }
     }
 }
