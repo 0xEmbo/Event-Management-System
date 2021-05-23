@@ -41,8 +41,7 @@
                     </div>
                         @auth
                             @if ($event->user_id == auth()->user()->id)
-                                <a href='{{ route('events.edit', $event->id) }}' class="btn btn-primary view-page-btn">Edit</a>
-                                <form action='{{ route('events.destroy', $event->id) }}' method='post' styl>
+                                <form action='{{ route('events.destroy', $event->id) }}' method='post'>
                                     @csrf
                                     @method('delete')
                                     <button type='submit' class="btn btn-danger delete-btn">Delete</button>
@@ -51,8 +50,9 @@
                                 <div class="container-login100-form-btn" id="rgst-btn-div">
                                     <a href="{{ route('events.register', $event->id) }}" class="btn login100-form-btn">Register</a>
                                 </div>
-                                <form action="#" method='post'>
+                                <form action="#" method="post">
                                     @csrf
+                                    <input type="email" placeholder="Email Address">
                                     <input id="rate-input" type="number" min="0" max="5">
                                     <button class="btn btn-primary view-page-btn" type="submit">Rate Event</button>
                                 </form>

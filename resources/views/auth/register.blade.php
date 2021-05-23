@@ -6,11 +6,12 @@
         <div class="wrap-login100-sign p-t-10 p-b-30">
             <form class="login100-form validate-form" method='post' action='{{ route('register') }}'>
                 @csrf
-                <span class="login100-form-title p-b-40">
+                <span class="login100-form-title">
                     {{ __('Register') }}
                 </span>
-                <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="name" placeholder="{{ __('Name') }}" required>
+                <div class="wrap-input100 m-b-10">
+                    <label for="name">Name:</label>
+                    <input class="input100" type="text" name="name" required>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -19,7 +20,8 @@
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="email" name="email" placeholder="{{ __('E-Mail Address') }}" required>
+                <label for="email">E-mail:</label>
+                    <input class="input100" type="email" name="email" required>
                     @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -28,7 +30,8 @@
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 m-b-20">
-                    <input class="input100" type="password" name="password" placeholder="{{ __('Password') }}" required>
+                    <label for="password">Password</label>
+                    <input class="input100" type="password" name="password" required>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -37,20 +40,25 @@
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 m-b-20">
-                    <input class="input100" type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" required>
+                    <label for="password_confirmation">Confirm Password:</label>
+                    <input class="input100" type="password" name="password_confirmation" required>
                     <span class="focus-input100"></span>
                 </div>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="company" placeholder="Company" required>
+                    <label for="company">Company:</label>
+                    <input class="input100" type="text" name="company" required>
                 </div>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="date" name="birthday" placeholder="Birthday" required>
+                    <label for="birthday">Birth Date:</label>
+                    <input class="input100" type="date" name="birthday" required>
                 </div>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="address" placeholder="Address" required>
+                    <label for="address">Address:</label>
+                    <input class="input100" type="text" name="address" required>
                 </div>
                 <div class="wrap-input100 m-b-16">
-                    <input class="input100" type="text" name="phone" placeholder="Phone number" required>
+                    <label for="phone">Phone Number:</label>
+                    <input class="input100" type="text" name="phone" required>
                 </div>
                 <div class="container-login100-form-btn">
                     <button class="login100-form-btn nav-links">

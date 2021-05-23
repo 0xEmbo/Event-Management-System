@@ -15,12 +15,12 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $user = new User;
-        $user->name = 'admin';
-        $user->email = 'admin@ems.com';
-        $user->password = Hash::make('admin');
+        $user->name = 'test';
+        $user->email = 'test@ems.com';
+        $user->password = Hash::make('test');
         $user->company = 'Eventopedia';
-        $user->bio = 'This is the admin bio!';
-        $user->birthday = '1998-06-21';
+        $user->bio = 'This is the test user bio!';
+        $user->birthday = '1997-04-30';
         $user->address = 'Egypt, cairo';
         $user->phone = '0123456789';
         $user->save();

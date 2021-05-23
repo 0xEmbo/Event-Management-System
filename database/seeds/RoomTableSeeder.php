@@ -24,17 +24,45 @@ class RoomTableSeeder extends Seeder
         $room9 = new Room();
         $room10 = new Room();
 
-
         $room1->rate = 0;
+        $room1->capacity = 100;
+        $room1->price_per_hour = 100;
+
         $room2->rate = 0;
+        $room2->capacity = 100;
+        $room2->price_per_hour = 90;
+
         $room3->rate = 0;
+        $room3->capacity = 100;
+        $room3->price_per_hour = 80;
+
         $room4->rate = 0;
+        $room4->capacity = 50;
+        $room4->price_per_hour = 40;
+
         $room5->rate = 0;
+        $room5->capacity = 50;
+        $room5->price_per_hour = 45;
+
         $room6->rate = 0;
+        $room6->capacity = 50;
+        $room6->price_per_hour = 35;
+
         $room7->rate = 0;
+        $room7->capacity = 45;
+        $room7->price_per_hour = 35;
+
         $room8->rate = 0;
+        $room8->capacity = 25;
+        $room8->price_per_hour = 25;
+
         $room9->rate = 0;
+        $room9->capacity = 25;
+        $room9->price_per_hour = 20;
+
         $room10->rate = 0;
+        $room10->capacity = 15;
+        $room10->price_per_hour = 10;
 
         $room1->save();
         $room2->save();

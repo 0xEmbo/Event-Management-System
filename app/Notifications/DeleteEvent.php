@@ -2,13 +2,12 @@
 
 namespace App\Notifications;
 
-use App\Event;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class VerifyEventRegisteration extends Notification
+class DeleteEvent extends Notification
 {
     use Queueable;
 
@@ -17,9 +16,9 @@ class VerifyEventRegisteration extends Notification
      *
      * @return void
      */
-    public function __construct(Event $event)
+    public function __construct()
     {
-        $this->event = $event;
+        //
     }
 
     /**
@@ -43,10 +42,10 @@ class VerifyEventRegisteration extends Notification
     {
         return (new MailMessage)
                     ->greeting('Hello!')
-                    ->subject('Event Registeration')
-                    ->line('You have successfully registered for '.$this->event->title.'!')
-                    ->action('View Event', route('events.show', $this->event->id))
-                    ->line('Thank you for using Eventopedia!');
+                    ->subject('Event Deleted')
+                    ->line('Event ('.$this->event->title.') has been deleted by the organizer!')
+                    ->action('Check All Events', route('home'))
+                    ->line('<br>Thank you for using Eventopedia!');
     }
 
     /**

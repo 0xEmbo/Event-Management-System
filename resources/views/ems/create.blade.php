@@ -9,7 +9,7 @@
                 @method('put')
                 <input type='hidden' name='id' value='{{ $event->id }}'>
             @endif
-            <span class="login100-form-title p-b-40">
+            <span class="login100-form-title p-b-10">
                 {{ isset($event) ? _('Edit Event') : __('Create Event') }}
             </span>
             <div class="wrap-input100 m-b-16">
@@ -35,7 +35,7 @@
             </div>
             <div class="wrap-input100 m-b-16">
                 <label for="description">Description:</label>
-                <textarea name="description" id="description" cols="5" rows="20", class='form-control input100' required>{{ isset($event) ? $event->description : "" }}</textarea>
+                <textarea name="description" id="description" cols="5" rows="5", class='input100' required>{{ isset($event) ? $event->description : "" }}</textarea>
             </div>
             <div class="wrap-input100 m-b-16">
                 <label for="price">Price:</label>
@@ -68,7 +68,7 @@
             </div>
             <div class="wrap-input100 m-b-16">
                 <label for="image">Image:</label>
-                <input class="input100" id="image" type="file" name="image">
+                <input class="input100" id="image" type="file" name="image" required>
             </div>
             <div class="container-login100-form-btn">
                 <button type="submit" class="login100-form-btn">

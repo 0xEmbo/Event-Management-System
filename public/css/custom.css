@@ -32,7 +32,7 @@ footer {
     padding-top: 5%;
 }
 .pt170 {
-    padding-top: 130px;
+    padding-top: 100px;
 }
 #forgot_pass {
     color: white;
@@ -363,37 +363,14 @@ label {
     width: 50%;
 }
 
-  /* If you want the content centered horizontally and vertically */
-.centered {
-    position: relative;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: left;
-}
-
-.centered h1 {
-    font-size: 80px;
-    font-weight: 600;
-    text-align: center;
-}
-.centered h2 {
-    font-size: 40px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-.centered p {
-    font-size: 20px;
-    margin-left: 30px;
-}
-
 /* CSS for ems.view page */
 section, .container, .container-fluid {
     position: relative;
 }
-@media (min-width: 1200px)
-.container {
+@media (min-width: 1200px){
+    .container {
     max-width: 1140px;
+    }
 }
 .container {
     margin-right: auto;

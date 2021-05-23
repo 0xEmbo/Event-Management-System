@@ -13,7 +13,7 @@
             @endsection
             <h1 class="h1-custom">{{ $category->name }}</h1>
             <div class="row">
-                @foreach ($category->events as $event)
+                @foreach ($events as $event)
                     <div class="column">
                         <div class="event-div">
                             <table class="table">
@@ -40,7 +40,7 @@
                     </div>
                 @endforeach
             </div>
-            {{ $events->appends(['search' => request()->query('search')])->links() }}
+            {{-- {{ $events->appends(['search' => request()->query('search')]) }} --}}
         @endif
     </div>
 @endsection

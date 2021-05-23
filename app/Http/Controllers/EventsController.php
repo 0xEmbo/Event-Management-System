@@ -14,11 +14,12 @@ use App\Applicant;
 use App\Http\Requests\EventRegisterationRequest;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateEventRequest;
-use App\Notifications\VerifyEventRegisteration;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
+use App\Notifications\VerifyEventRegisteration;
+use App\Notifications\DeleteEvent;
 
 class EventsController extends Controller
 {
@@ -139,6 +140,8 @@ class EventsController extends Controller
      */
     public function destroy(Event $event)
     {
+        $applicants = $event->applicants;
+        dd($applicants);
         $response = Gate::inspect('del-edit-event', $event);
         if($response->allowed()) {
             Storage::delete($event->image_path);
@@ -146,6 +149,9 @@ class EventsController extends Controller
             session()->flash('message', 'Event deleted successfully!');
             session()->flash('alert-class', 'alert-success');
             return redirect(route('home'));
+            foreach ($applicants as $applicant){
+                Notification::route('mail', $applicant->email)->notify(new DeleteEvent($event));
+            }
         }
         else {
             echo $response->message();
@@ -156,10 +162,10 @@ class EventsController extends Controller
     {
         $search = request()->query('search');
         if($search){
-            $events = $category->events()->where('title', 'like', '%'.$search.'%')->orWhere('description', 'like', '%'.$search.'%')->simplePaginate(3);
+            $events = $category->events()->where('title', 'LIKE', '%'.$search.'%')->orWhere('description', 'LIKE', '%'.$search.'%')->get();
         }
         else{
-            $events = $category->events()->simplePaginate(3);
+            $events = $category->events;
         }
         return view('ems.index')->with('category', $category)->with('events', $events);
 
@@ -190,7 +196,7 @@ class EventsController extends Controller
 
     public function myevents(User $user)
     {
-        $events = $user->events()->simplePaginate(3);
+        $events = $user->events();
         return view('ems.myevents')->with('user', $user);
     }
 
