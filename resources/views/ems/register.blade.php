@@ -4,7 +4,7 @@
 <div class="pt170">
     <div class="container-login100">
         <div class="p-t-90 p-b-30">
-            <form class="login100-form validate-form" method="post" action="{{ route('events.join', $event->id) }}">
+            <form class="login100-form validate-form" method="post" action="{{ route('event.join', $event->id) }}">
                 @csrf
                 <span class="login100-form-title p-b-40">Registeration Form</span>
                 <div class="wrap-input100 m-b-16">

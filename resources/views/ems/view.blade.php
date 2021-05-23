@@ -41,30 +41,45 @@
                     </div>
                         @auth
                             @if ($event->user_id == auth()->user()->id)
-                                <form action='{{ route('events.destroy', $event->id) }}' method='post'>
+                                <form action='{{ route('event.destroy', $event->id) }}' method='post'>
                                     @csrf
                                     @method('delete')
                                     <button type='submit' class="btn btn-danger delete-btn">Delete</button>
                                 </form>
                             @else
                                 <div class="container-login100-form-btn" id="rgst-btn-div">
-                                    <a href="{{ route('events.register', $event->id) }}" class="btn login100-form-btn">Register</a>
+                                    <a href="{{ route('event.register', $event->id) }}" class="btn login100-form-btn">Register</a>
                                 </div>
-                                <form action="#" method="post">
+                                <form action="{{ route('room.rate', $event->id) }}" method="post">
                                     @csrf
-                                    <input type="email" placeholder="Email Address">
-                                    <input id="rate-input" type="number" min="0" max="5">
-                                    <button class="btn btn-primary view-page-btn" type="submit">Rate Event</button>
+                                    @method('put')
+                                    <input type="email" name="applicant_email" placeholder="Email Address" required>
+                                    <input id="rate-input" name="rate" type="number" min="0" max="5" required>
+                                    <button class="btn btn-primary view-page-btn" type="submit">Rate Room</button>
+                                </form>
+                                <form action="{{ route('applicant.delete', $event->id) }}" method='post'>
+                                    @csrf
+                                    @method('delete')
+                                    <input type="email" name="applicant_email" placeholder="Email Address" required>
+                                    <button class="btn btn-danger view-page-btn" type="submit">Leave Event</button>
                                 </form>
                             @endif
                         @else
                             <div class="container-login100-form-btn" id="rgst-btn-div">
-                                <a href="{{ route('events.register', $event->id) }}" class="btn login100-form-btn">Register</a>
+                                <a href="{{ route('event.register', $event->id) }}" class="btn login100-form-btn">Register</a>
                             </div>
-                            <form action="#" method='post'>
+                            <form action="{{ route('room.rate', $event->id) }}" method='post'>
                                 @csrf
-                                <input id="rate-input" type="number" min="0" max="5">
-                                <button class="btn btn-primary view-page-btn" type="submit">Rate Event</button>
+                                @method('put')
+                                <input type="email" name="applicant_email" placeholder="Email Address" required>
+                                <input id="rate-input" name="rate" type="number" min="0" max="5" required>
+                                <button class="btn btn-primary view-page-btn" type="submit">Rate Room</button>
+                            </form>
+                            <form action="{{ route('applicant.delete', $event->id) }}" method='post'>
+                                @csrf
+                                @method('delete')
+                                <input type="email" name="applicant_email" placeholder="Email Address" required>
+                                <button class="btn btn-danger" type="submit">Leave Event</button>
                             </form>
                         @endauth
                 </div>

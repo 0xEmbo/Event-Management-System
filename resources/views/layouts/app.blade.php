@@ -66,7 +66,7 @@
                         @endif
                     @else
                         <li class="nav-item">
-                            <a class="btn btn-nav btn-lg navbar-brand" href="{{ route('events.create') }}" id="btn-ce">Create Event</a>
+                            <a class="btn btn-nav btn-lg navbar-brand" href="{{ route('event.create') }}" id="btn-ce">Create Event</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="btn navbar-brand" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

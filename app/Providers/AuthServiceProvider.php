@@ -29,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // Authorization for deleting & editing events
-        Gate::define('del-edit-event', function(User $user, Event $event) {
+        Gate::define('delete-event', function(User $user, Event $event) {
             return $user->id === $event->user_id ? Response::allow() : Response::deny('<br><center><h1>You are not authorized to do this action!</h1></center>');
         });
 

@@ -18,7 +18,7 @@
                                     <img src='{{ asset($event->image_path) }}' width="112px" height="63px">
                                 </td>
                                 <td class="table-border">
-                                    <a href="{{ route('events.show', $event->id) }}">{{$event->title}}</a>
+                                    <a href="{{ route('event.show', $event->id) }}">{{$event->title}}</a>
                                 </td>
                                 <td class="table-border">
                                     {{ $event->user->name }}

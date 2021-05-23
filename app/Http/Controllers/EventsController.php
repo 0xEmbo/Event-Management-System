@@ -13,7 +13,6 @@ use App\Applicant;
 
 use App\Http\Requests\EventRegisterationRequest;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\UpdateEventRequest;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
@@ -26,17 +25,8 @@ class EventsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only(['create', 'store', 'edit', 'update', 'destroy']);
-        $this->middleware('CheckTime')->only(['store', 'update']);
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+        $this->middleware('auth')->only(['create', 'store', 'destroy', 'profile', 'myevents', 'profile_update']);
+        $this->middleware('CheckTime')->only(['store']);
     }
 
     /**
@@ -70,7 +60,8 @@ class EventsController extends Controller
         $event->save();
         session()->flash('message', 'Event created successfully!');
         session()->flash('alert-class', 'alert-success');
-        return redirect(route('home'));
+        return redirect()->back();
+
     }
 
     /**
@@ -85,54 +76,6 @@ class EventsController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Event $event)
-    {
-        $response = Gate::inspect('del-edit-event', $event);
-        if($response->allowed()) {
-            return view('ems.create')->with('event', $event)->with('categories', Category::all())->with('rooms', Room::all());
-        }
-        else {
-            echo $response->message();
-        }
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateEventRequest $request, Event $event)
-    {
-        $response = Gate::inspect('del-edit-event', $event);
-        if($response->allowed()) {
-            $event->category_id = $request->category_id;
-            $event->title = $request->title;
-            $event->description = $request->description;
-            $event->price = $request->price;
-            $event->room_id = $request->room_id;
-            $event->starts_at = $request->starts_at;
-            $event->ends_at = $request->ends_at;
-            Storage::delete($event->image_path);
-            if($request->image)
-                $event->image_path = '/storage/'.$request->image->store('event_imgs');
-            $event->save();
-            session()->flash('message', 'Event updated successfully!');
-            session()->flash('alert-class', 'alert-success');
-            return redirect(route('home'));
-        }
-        else {
-            echo $response->message();
-        }
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
@@ -141,20 +84,20 @@ class EventsController extends Controller
     public function destroy(Event $event)
     {
         $applicants = $event->applicants;
-        dd($applicants);
-        $response = Gate::inspect('del-edit-event', $event);
+        $response = Gate::inspect('delete-event', $event);
         if($response->allowed()) {
             Storage::delete($event->image_path);
             $event->delete();
             session()->flash('message', 'Event deleted successfully!');
             session()->flash('alert-class', 'alert-success');
-            return redirect(route('home'));
+            return redirect()->back();
             foreach ($applicants as $applicant){
                 Notification::route('mail', $applicant->email)->notify(new DeleteEvent($event));
             }
         }
         else {
             echo $response->message();
+            return redirect()->back();
         }
     }
 
@@ -187,11 +130,48 @@ class EventsController extends Controller
         $applicant->phone = $request->applicant_phone;
         $applicant->address = $request->applicant_address;
         $applicant->save();
+        $event->applicants_number = $event->applicants_number + 1;
+        $event->save();
         Notification::route('mail', $request->applicant_email)->notify(new VerifyEventRegisteration($event));
 
         session()->flash('message', 'You have successfully registered to the event, Check your mail!');
         session()->flash('alert-class', 'alert-success');
-        return redirect(route('home'));
+        return redirect()->back();
+    }
+
+    public function delete_applicant(Request $request, Event $event)
+    {
+        $applicant = Applicant::where('email', $request->applicant_email)->where('event_id', $event->id)->first();
+        if(!$applicant == null){
+            $applicant->delete();
+            $event->applicants_number = $event->applicants_number - 1;
+            $event->save();
+            session()->flash('message', 'You have left the event successfully!');
+            session()->flash('alert-class', 'alert-success');
+        }else{
+            session()->flash('message', 'Please enter a valid email!');
+            session()->flash('alert-class', 'alert-danger');
+        }
+        return redirect()->back();
+    }
+
+    public function rate_room(Request $request, Event $event)
+    {
+        $applicant = Applicant::where('email', $request->applicant_email)->where('event_id', $event->id)->first();
+        if($applicant->has_rated){
+            session()->flash('message', 'Sorry, you have already rated before!');
+            session()->flash('alert-class', 'alert-danger');
+        }else{
+            $room = Room::where('id', $event->room_id)->first();
+            $room->rate = ($room->rate + $request->rate)/2;
+            $room->save();
+            $applicant->has_rated = 1;
+            $applicant->save();
+            session()->flash('message', 'Thanks for your rating!');
+            session()->flash('alert-class', 'alert-success');
+        }
+        return redirect()->back();
+
     }
 
     public function myevents(User $user)
@@ -230,10 +210,10 @@ class EventsController extends Controller
             $user->save();
             session()->flash('message', 'You have successfully updated your profile!');
             session()->flash('alert-class', 'alert-success');
-            return redirect(route('profile', $user->id));
         }
         else {
             echo $response->message();
         }
+        return redirect(route('profile', $user->id));
     }
 }

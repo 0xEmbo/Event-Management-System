@@ -19,6 +19,7 @@ class CreateEventsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->float('price');
+            $table->integer('applicants_number')->default(0);
             $table->integer('room_id');
             $table->integer('user_id');
             $table->string('image_path');

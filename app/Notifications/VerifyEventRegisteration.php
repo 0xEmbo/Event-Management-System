@@ -45,7 +45,7 @@ class VerifyEventRegisteration extends Notification
                     ->greeting('Hello!')
                     ->subject('Event Registeration')
                     ->line('You have successfully registered for '.$this->event->title.'!')
-                    ->action('View Event', route('events.show', $this->event->id))
+                    ->action('View Event', route('event.show', $this->event->id))
                     ->line('Thank you for using Eventopedia!');
     }
 

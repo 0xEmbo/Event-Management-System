@@ -7,13 +7,13 @@
         @else
             @section('search')
                 <form action="{{ route('category', $category->id) }}" method="get">
-                    <input type="text" name="search" placeholder="Search" id="search-input">
+                    <input type="text" name="search" value="{{ request()->query('search') }}" id="search-input">
                     <button type="submit" class="btn search-btn btn-sm">Search</button>
                 </form>
             @endsection
             <h1 class="h1-custom">{{ $category->name }}</h1>
             <div class="row">
-                @foreach ($events as $event)
+                @forelse ($events as $event)
                     <div class="column">
                         <div class="event-div">
                             <table class="table">
@@ -28,7 +28,7 @@
                                             <img src='{{ asset($event->image_path) }}' width="112px" height="63px">
                                         </td>
                                         <td class="table-border">
-                                            <a href="{{ route('events.show', $event->id) }}">{{$event->title}}</a>
+                                            <a href="{{ route('event.show', $event->id) }}">{{$event->title}}</a>
                                         </td>
                                         <td class="table-border">
                                             {{ $event->user->name }}
@@ -38,9 +38,10 @@
                             </table>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <h1>No events found</h1>
+                @endforelse
             </div>
-            {{-- {{ $events->appends(['search' => request()->query('search')]) }} --}}
         @endif
     </div>
 @endsection

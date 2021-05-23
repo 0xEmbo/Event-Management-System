@@ -24,10 +24,12 @@ Route::get('aboutus', function (){
 
 Auth::routes();
 
-Route::resource('events', 'EventsController');
-Route::get('categories/{category}', 'EventsController@show_category')->name('category');
-Route::get('events/{event}/register', 'EventsController@register')->name('events.register');
-Route::post('events/{event}/join', 'EventsController@join')->name('events.join');
+Route::resource('event', 'EventsController');
+Route::get('category/{category}', 'EventsController@show_category')->name('category');
+Route::get('event/{event}/register', 'EventsController@register')->name('event.register');
+Route::post('event/{event}/join', 'EventsController@join')->name('event.join');
 Route::get('{user}/myevents', 'EventsController@myevents')->name('myevents');
 Route::get('user/{user}', 'EventsController@profile')->name('profile');
 Route::post('user/{user}/update', 'EventsController@profile_update')->name('profile.update');
+Route::delete('event/{event}/delete_applicant', 'EventsController@delete_applicant')->name('applicant.delete');
+Route::put('event/{event}/rate_room', 'EventsController@rate_room')->name('room.rate');
