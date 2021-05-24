@@ -32,7 +32,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="header-navbar">
-                <a class="navbar-brand" href="/" id="home">Eventopedia</a>
+                <a class="navbar-brand" href="{{ route('home') }}" id="home">Eventopedia</a>
             </div>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 no-bullets">
                     <li class="nav-item dropdown">

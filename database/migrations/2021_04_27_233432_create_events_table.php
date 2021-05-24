@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration
             $table->string('image_path');
             $table->dateTime('starts_at');
             $table->dateTime('ends_at');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

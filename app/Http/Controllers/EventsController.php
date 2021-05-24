@@ -29,6 +29,12 @@ class EventsController extends Controller
         $this->middleware('CheckTime')->only(['store']);
     }
 
+    public function index()
+    {
+        //
+        return view('ems.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -60,7 +66,7 @@ class EventsController extends Controller
         $event->save();
         session()->flash('message', 'Event created successfully!');
         session()->flash('alert-class', 'alert-success');
-        return redirect()->back();
+        return redirect(route('home'));
 
     }
 
@@ -87,10 +93,10 @@ class EventsController extends Controller
         $response = Gate::inspect('delete-event', $event);
         if($response->allowed()) {
             Storage::delete($event->image_path);
-            $event->delete();
+            $event->forceDelete();
             session()->flash('message', 'Event deleted successfully!');
             session()->flash('alert-class', 'alert-success');
-            return redirect()->back();
+            return redirect(route('home'));
             foreach ($applicants as $applicant){
                 Notification::route('mail', $applicant->email)->notify(new DeleteEvent($event));
             }
@@ -176,8 +182,13 @@ class EventsController extends Controller
 
     public function myevents(User $user)
     {
-        $events = $user->events();
-        return view('ems.myevents')->with('user', $user);
+        $response = Gate::inspect('visit-profile', $user);
+        if($response->allowed()) {
+            return view('ems.myevents')->with('user', $user);
+        }
+        else {
+            echo $response->message();
+        }
     }
 
     public function profile(User $user)
@@ -215,5 +226,10 @@ class EventsController extends Controller
             echo $response->message();
         }
         return redirect(route('profile', $user->id));
+    }
+
+    public function aboutus()
+    {
+        return view('ems.aboutus');
     }
 }

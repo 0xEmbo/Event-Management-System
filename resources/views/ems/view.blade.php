@@ -40,7 +40,7 @@
                         </div>
                     </div>
                         @auth
-                            @if ($event->user_id == auth()->user()->id)
+                            @if (auth()->user()->id == $event->user_id || auth()->user()->is_admin == 1)
                                 <form action='{{ route('event.destroy', $event->id) }}' method='post'>
                                     @csrf
                                     @method('delete')

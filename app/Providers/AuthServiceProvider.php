@@ -28,14 +28,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Authorization for deleting & editing events
+        // Authorization for deleting events
         Gate::define('delete-event', function(User $user, Event $event) {
-            return $user->id === $event->user_id ? Response::allow() : Response::deny('<br><center><h1>You are not authorized to do this action!</h1></center>');
+            return ($user->id === $event->user_id || $user->is_admin == 1) ? Response::allow() : Response::deny('<br><center><h1>You are not authorized to do this action!</h1></center>');
         });
 
         // Authorization for profile page
         Gate::define('visit-profile', function(User $user) {
-            return $user->id == explode('/', request()->path())[1] ? Response::allow() : Response::deny('<br><center><h1>You are not authorized to do this action!</h1></center>');
+            return ($user->id == explode('/', request()->path())[1] || $user->is_admin == 1) ? Response::allow() : Response::deny('<br><center><h1>You are not authorized to do this action!</h1></center>');
         });
     }
 }

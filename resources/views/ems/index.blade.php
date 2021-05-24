@@ -20,7 +20,7 @@
                                 <thead>
                                     <th>Image</th>
                                     <th class="table-border">Title</th>
-                                    <th class="table-border">Organizer</th>
+                                    <th class="table-border">Price</th>
                                 </thead>
                                 <tbody>
                                     <tr>
@@ -31,7 +31,7 @@
                                             <a href="{{ route('event.show', $event->id) }}">{{$event->title}}</a>
                                         </td>
                                         <td class="table-border">
-                                            {{ $event->user->name }}
+                                            {{ $event->price }}$
                                         </td>
                                     </tr>
                                 </tbody>
