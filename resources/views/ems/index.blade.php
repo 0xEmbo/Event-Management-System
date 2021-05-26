@@ -52,7 +52,7 @@
         @else
             @section('search')
                 <form action="{{ route('category', $category->id) }}" method="get">
-                    <input type="text" name="search" value="{{ request()->query('search') }}" id="search-input">
+                    <input type="text" name="search" value="{{ request()->query('search') }}" placeholder="search" id="search-input">
                     <button type="submit" class="btn search-btn btn-sm">Search</button>
                 </form>
             @endsection
