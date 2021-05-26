@@ -3,7 +3,7 @@
 @section('content')
     <div class="header-content">
         @if(!isset($category))
-            <h1 style="margin-top: 10%; font-size: 50px">All education-related events<br>in one single plateform</h1><br><br><br>
+            <h1 style="margin: 50% 0px 20% 0px; font-size: 50px">All education-related events<br>in one single plateform</h1><br><br><br><br><br><br><br><br><br><br><br><br>
             @if(isset($finished_events))
                 <h1>Previous Events</h1>
                 @foreach ($finished_events as $finished_event)
@@ -28,7 +28,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <form action="{{ route('room.rate', $finished_event->id) }}" method="post">
+                                        <form action="{{ route('room.rate', $finished_event->room_id) }}" method="post">
                                             @csrf
                                             @method('put')
                                             <input type="number" name="room_id" value="{{ $finished_event->room_id }}" hidden required>

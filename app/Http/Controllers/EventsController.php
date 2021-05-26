@@ -168,16 +168,21 @@ class EventsController extends Controller
     public function rate_room(Request $request, Room $room)
     {
         $applicant = Applicant::where('email', $request->applicant_email)->where('room_id', $request->room_id)->first();
-        if($applicant->has_rated){
-            session()->flash('message', 'Sorry, you have already rated before!');
-            session()->flash('alert-class', 'alert-danger');
+        if($applicant){
+            if($applicant->has_rated){
+                session()->flash('message', 'Sorry, you have already rated before!');
+                session()->flash('alert-class', 'alert-danger');
+            }else{
+                $room->rate = ($room->rate + $request->rate)/2;
+                $room->save();
+                $applicant->has_rated = 1;
+                $applicant->save();
+                session()->flash('message', 'Thanks for your rating!');
+                session()->flash('alert-class', 'alert-success');
+            }
         }else{
-            $room->rate = ($room->rate + $request->rate)/2;
-            $room->save();
-            $applicant->has_rated = 1;
-            $applicant->save();
-            session()->flash('message', 'Thanks for your rating!');
-            session()->flash('alert-class', 'alert-success');
+            session()->flash('message', 'You haven\'t attented this event!');
+            session()->flash('alert-class', 'alert-danger');
         }
         return redirect()->back();
 
