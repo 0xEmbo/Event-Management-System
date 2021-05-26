@@ -5,6 +5,9 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\DeleteEvent;
+
 use App\Event;
 use Carbon\Carbon;
 
@@ -28,9 +31,18 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        // Scheduler for finished events (soft delete)
         $schedule->call(function () {
-            Event::where('ends_at', '<=', Carbon::now())->delete();
-        })->everySixHours();
+            $previous_event = Event::where('ends_at', '<=', Carbon::now());
+            if($previous_event){
+                $previous_event->delete();
+                $applicants = $previous_event->get()->applicants;
+                foreach ($applicants as $applicant){
+                    Notification::route('mail', $applicant->email)->notify(new DeleteEvent($previous_event));
+                }
+            }
+        })->everyMinute();
     }
 
     /**

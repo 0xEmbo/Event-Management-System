@@ -31,8 +31,11 @@ class EventsController extends Controller
 
     public function index()
     {
-        //
-        return view('ems.index');
+        if(Event::onlyTrashed()->get()->count() == 0){
+            return view('ems.index');
+        }else{
+            return view('ems.index')->with('finished_events', Event::onlyTrashed()->get());
+        }
     }
 
     /**
@@ -130,6 +133,7 @@ class EventsController extends Controller
 
         $applicant = new Applicant();
         $applicant->event_id = $event->id;
+        $applicant->room_id = $event->room_id;
         $applicant->fname = $request->applicant_fname;
         $applicant->lname = $request->applicant_lname;
         $applicant->email = $request->applicant_email;
@@ -161,14 +165,13 @@ class EventsController extends Controller
         return redirect()->back();
     }
 
-    public function rate_room(Request $request, Event $event)
+    public function rate_room(Request $request, Room $room)
     {
-        $applicant = Applicant::where('email', $request->applicant_email)->where('event_id', $event->id)->first();
+        $applicant = Applicant::where('email', $request->applicant_email)->where('room_id', $request->room_id)->first();
         if($applicant->has_rated){
             session()->flash('message', 'Sorry, you have already rated before!');
             session()->flash('alert-class', 'alert-danger');
         }else{
-            $room = Room::where('id', $event->room_id)->first();
             $room->rate = ($room->rate + $request->rate)/2;
             $room->save();
             $applicant->has_rated = 1;

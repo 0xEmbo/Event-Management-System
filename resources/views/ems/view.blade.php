@@ -68,13 +68,6 @@
                             <div class="container-login100-form-btn" id="rgst-btn-div">
                                 <a href="{{ route('event.register', $event->id) }}" class="btn login100-form-btn">Register</a>
                             </div>
-                            <form action="{{ route('room.rate', $event->id) }}" method='post'>
-                                @csrf
-                                @method('put')
-                                <input type="email" name="applicant_email" placeholder="Email Address" required>
-                                <input id="rate-input" name="rate" type="number" min="0" max="5" required>
-                                <button class="btn btn-primary view-page-btn" type="submit">Rate Room</button>
-                            </form>
                             <form action="{{ route('applicant.delete', $event->id) }}" method='post'>
                                 @csrf
                                 @method('delete')

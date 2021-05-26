@@ -28,4 +28,4 @@ Route::get('user/{user}/myevents', 'EventsController@myevents')->name('myevents'
 Route::get('user/{user}', 'EventsController@profile')->name('profile');
 Route::post('user/{user}/update', 'EventsController@profile_update')->name('profile.update');
 Route::delete('event/{event}/delete_applicant', 'EventsController@delete_applicant')->name('applicant.delete');
-Route::put('event/{event}/rate_room', 'EventsController@rate_room')->name('room.rate');
+Route::put('rate_room/{room}', 'EventsController@rate_room')->name('room.rate');

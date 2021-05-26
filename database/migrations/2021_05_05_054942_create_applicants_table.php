@@ -21,6 +21,7 @@ class CreateApplicantsTable extends Migration
             $table->string('phone');
             $table->string('address');
             $table->integer('event_id');
+            $table->integer('room_id');
             $table->boolean('has_rated')->default(0);
             $table->unique(['email', 'event_id']);
             $table->timestamps();
