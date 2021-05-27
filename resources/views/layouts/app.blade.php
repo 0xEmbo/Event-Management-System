@@ -17,12 +17,6 @@
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href="{{ asset('vendor/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{asset('css/icon-font.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animate/animate.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/css-hamburgers/hamburgers.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/animsition/css/animsition.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('vendor/daterangepicker/daterangepicker.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 </head>
@@ -98,15 +92,8 @@
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="{{ asset('vendor/scrollreveal/scrollreveal.min.js') }}"></script>
     <script src="{{ asset('vendor/magnific-popup/jquery.magnific-popup.min.js') }}"></script>
     <script src="{{ asset('js/custom.min.js') }}"></script>
-	<script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
-    <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
-    <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
-    <script src="{{asset('vendor/countdowntime/countdowntime.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
 </body>
 </html>

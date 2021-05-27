@@ -404,8 +404,8 @@ section, .container, .container-fluid {
 #img-view {
     width: 100%;
 }
-.align-left {
-    text-align: left;
+.align-center {
+    text-align: center;
 }
 h2 {
     margin-top: 0;
@@ -414,9 +414,6 @@ h2 {
     line-height: 1;
     font-family: 'Exo', sans-serif;
     font-size: 4.25rem;
-    text-align: left;
-}
-.mbr-section-text {
     text-align: left;
 }
 .block-content {
@@ -436,8 +433,12 @@ section {
 }
 #rgst-btn-div {
     margin-top: 20px;
-    justify-content: left;
 }
 .table {
     margin-bottom: 0px;
+}
+.view-div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 70%;
 }
