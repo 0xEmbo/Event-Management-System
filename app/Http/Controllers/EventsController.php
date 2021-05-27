@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Hash;
 use App\Notifications\VerifyEventRegisteration;
 use App\Notifications\DeleteEvent;
 
+use App\Notifications\FinishedEvent;
+use Carbon\Carbon;
+
 class EventsController extends Controller
 {
 

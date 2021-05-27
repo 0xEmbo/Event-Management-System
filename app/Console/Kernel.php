@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Notification;
 use App\Notifications\DeleteEvent;
 
 use App\Event;
+use App\Notifications\FinishedEvent;
 use Carbon\Carbon;
 
 class Kernel extends ConsoleKernel
@@ -34,12 +35,14 @@ class Kernel extends ConsoleKernel
 
         // Scheduler for finished events (soft delete)
         $schedule->call(function () {
-            $previous_event = Event::where('ends_at', '<=', Carbon::now());
-            if($previous_event){
-                $previous_event->delete();
-                $applicants = $previous_event->get()->applicants;
-                foreach ($applicants as $applicant){
-                    Notification::route('mail', $applicant->email)->notify(new DeleteEvent($previous_event));
+            $previous_events = Event::where('ends_at', '<=', Carbon::now())->get();
+            if($previous_events){
+                foreach($previous_events as $previous_event){
+                    $applicants = $previous_event->applicants;
+                    $previous_event->delete();
+                    foreach ($applicants as $applicant){
+                        Notification::route('mail', $applicant->email)->notify(new FinishedEvent($previous_event));
+                    }
                 }
             }
         })->everyMinute();

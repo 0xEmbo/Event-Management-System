@@ -3,9 +3,9 @@
 @section('content')
     <div class="header-content">
         @if(!isset($category))
-            <h1 style="margin: 50% 0px 20% 0px; font-size: 50px">All education-related events<br>in one single plateform</h1><br><br><br><br><br><br><br><br><br><br><br><br>
+            <h1 style="margin: 90% 0px 40% 0px; font-size: 50px">All education-related events<br>in one single plateform</h1>
             @if(isset($finished_events))
-                <h1>Previous Events</h1>
+                <h1>Previous Events</h1><br>
                 @foreach ($finished_events as $finished_event)
                     <div class="column">
                         <div class="event-div">
